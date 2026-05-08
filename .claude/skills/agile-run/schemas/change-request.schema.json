@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Change Request Record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "metadata",
+    "interruption_context",
+    "change_summary",
+    "reason",
+    "change_classification",
+    "impacted_stages",
+    "impact_analysis",
+    "earliest_impacted_stage",
+    "downstream_revalidation",
+    "decision",
+    "approvals"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "change_request_id",
+        "status",
+        "created_at",
+        "owner",
+        "affected_feature",
+        "affected_story",
+        "affected_release"
+      ]
+    },
+    "interruption_context": {
+      "type": "object",
+      "required": [
+        "current_stage",
+        "current_state",
+        "work_interrupted",
+        "approved_artifacts_affected",
+        "draft_artifacts_affected",
+        "downstream_work_affected",
+        "resume_point"
+      ]
+    },
+    "change_classification": {
+      "enum": [
+        "draft_editorial_change",
+        "draft_semantic_change",
+        "approved_editorial_change",
+        "approved_semantic_change",
+        "release_freeze_change",
+        "emergency_rollback_change"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

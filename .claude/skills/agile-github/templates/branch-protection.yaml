@@ -1,0 +1,4 @@
+default_branch:
+  require_pull_request: true
+  require_status_checks: true
+  required_status_checks: [Agile Gate]

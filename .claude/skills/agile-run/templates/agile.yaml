@@ -1,0 +1,73 @@
+schema_version: "{{schema_version}}"
+repository:
+  name: "{{repo_name}}"
+  provider: "{{repo_provider}}"
+  owner: "{{repo_owner}}"
+  url: {{repo_url}}
+agile:
+  root: ".agile"
+  initialized_at: "{{created_at}}"
+  initialized_by: "{{owner}}"
+  workflow_version: "1.0.0"
+directories:
+  changes: ".agile/changes"
+  features: ".agile/features"
+  releases: ".agile/releases"
+rules:
+  approved_artifacts_are_immutable: true
+  semantic_change_requires_change_request: true
+  latest_files_are_not_approval_targets: true
+  ai_must_not_self_approve: true
+  bdd_owner_stage: "tdd"
+  bdd_is_primary_state: false
+  mid_workflow_semantic_change_requires_classification: true
+relationships:
+  default_user_story_to_fid: "one_to_one"
+  allowed_user_story_to_fid: ["one_to_one", "one_to_many_with_recorded_decision", "many_to_one_with_recorded_decision"]
+  fid_to_tdd_flows: "one_to_many"
+  acceptance_consumes: ["PRD", "DDD", "FID", "TDD", "BDD", "evidence"]
+validation:
+  mode: "skill"
+  schemas_location: ".claude/skills/agile-run/schemas"
+  scripts_location: ".claude/skills/agile-run/scripts"
+integrations:
+  github:
+    enabled: false
+    generated_files:
+      pr_template: false
+      issue_templates: false
+      actions: false
+      project_field_template: false
+      branch_protection_template: false
+    workflow:
+      issue_pr_workflow_enabled: false
+      manual_linking_required: true
+      require_agile_metadata: true
+      require_issue_links_in_pr: true
+      require_artifact_paths: true
+    issues:
+      enabled: false
+      use_sub_issues: true
+      labels_enabled: true
+      milestones_enabled: true
+      create_tdd_flow_issues: false
+    pull_requests:
+      enabled: false
+      draft_pr_by_default: true
+      link_pr_to_issue: true
+      require_agile_metadata: true
+    actions:
+      enabled: false
+      agile_gate_enabled: false
+    projects:
+      enabled: false
+      project_owner_type: null
+      project_owner: null
+      project_number: null
+      fields_template: ".github/agile-project-fields.yaml"
+    permissions:
+      require_user_confirmation_before_generating: true
+      require_user_confirmation_before_overwrite: true
+    source_of_truth:
+      agile_runtime: ".agile"
+      github_role: "collaboration_surface"

@@ -1,0 +1,9 @@
+name: Agile Gate
+on: [pull_request]
+jobs:
+  agile-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test -d .agile || exit 0
+      - run: '! grep -RIn "{{[^}]*}}" .agile'

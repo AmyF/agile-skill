@@ -1,0 +1,8 @@
+name: Agile Feature
+description: Track an agile-skill Feature
+title: "[Feature] <title>"
+labels: [agile]
+body:
+  - type: markdown
+    attributes:
+      value: "Source of truth: `.agile`"

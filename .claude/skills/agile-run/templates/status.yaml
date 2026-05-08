@@ -1,0 +1,30 @@
+schema_version: "{{schema_version}}"
+project:
+  name: "{{repo_name}}"
+  agile_root: ".agile"
+workflow:
+  current_feature: null
+  current_story: null
+  current_release: null
+  current_level: null
+  current_stage: null
+  current_state: "initialized"
+  previous_valid_state: null
+  blocked: false
+  recovery_required: false
+features: {}
+stories: {}
+releases: {}
+change_requests: {}
+pending_revalidation: []
+approvals:
+  records: []
+checkpoints:
+  latest: null
+  history:
+    - id: "checkpoint-initialized"
+      timestamp: "{{created_at}}"
+      state: "initialized"
+      stage: null
+      notes: "Initialized agile runtime."
+last_updated_at: "{{updated_at}}"

@@ -1,0 +1,4 @@
+fields:
+  - {name: Agile ID, type: text}
+  - {name: Agile Type, type: single_select}
+  - {name: Agile Path, type: text}

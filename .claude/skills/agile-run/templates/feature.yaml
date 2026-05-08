@@ -1,0 +1,29 @@
+schema_version: "{{schema_version}}"
+feature:
+  id: "{{feature_id}}"
+  slug: "{{feature_slug}}"
+  title: "{{feature_title}}"
+  owner: "{{feature_owner}}"
+  status: "in_progress"
+  created_at: "{{created_at}}"
+  updated_at: "{{updated_at}}"
+workflow:
+  current_stage: "prd"
+  current_state: "prd_draft"
+  previous_valid_state: null
+  blocked: false
+  recovery_required: false
+documents:
+  prd: {versions: [], latest: null, approved: false, pending_revalidation: false}
+  ddd: {versions: [], latest: null, approved: false, pending_revalidation: false}
+stories: []
+feature_acceptance: {versions: [], latest: null, approved: false, pending_revalidation: false}
+traceability: {file: "traceability.yaml"}
+github:
+  enabled: false
+  feature_issue: {number: null, url: null}
+  project: {item_id: null}
+approvals: {records: []}
+open_questions: []
+risks: []
+decisions: []

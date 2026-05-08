@@ -1,0 +1,8 @@
+name: Agile Change Request
+description: Track an agile-skill Change Request
+title: "[Change Request] <title>"
+labels: [agile]
+body:
+  - type: markdown
+    attributes:
+      value: "Source of truth: `.agile`"

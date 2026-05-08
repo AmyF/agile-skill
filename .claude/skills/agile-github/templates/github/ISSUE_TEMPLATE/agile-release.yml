@@ -1,0 +1,8 @@
+name: Agile Release
+description: Track an agile-skill Release
+title: "[Release] <title>"
+labels: [agile]
+body:
+  - type: markdown
+    attributes:
+      value: "Source of truth: `.agile`"

@@ -1,0 +1,15 @@
+schema_version: "{{schema_version}}"
+release:
+  id: "{{release_id}}"
+  title: "{{release_title}}"
+  owner: "{{owner}}"
+  status: "planned"
+  created_at: "{{created_at}}"
+  updated_at: "{{updated_at}}"
+  target_date: null
+workflow: {current_state: "planned", previous_valid_state: null, blocked: false, recovery_required: false}
+scope: {included_features: [], included_stories: [], excluded_stories: [], change_requests: []}
+verification: {release_acceptance_summary: "acceptance-summary.md", required_evidence: [], known_issues: [], risks: []}
+rollback: {plan: null, tested: false, evidence: []}
+approvals: {records: []}
+github: {enabled: false, release_issue: {number: null, url: null}, milestone: {title: null, url: null}}

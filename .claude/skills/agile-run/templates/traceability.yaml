@@ -1,0 +1,21 @@
+schema_version: "{{schema_version}}"
+feature: "{{feature_id}}"
+traceability:
+  prd_to_user_stories: []
+  ddd_to_prd:
+    terms: []
+    aggregates: []
+    entities: []
+    value_objects: []
+    domain_events: []
+    commands: []
+    policies: []
+    invariants: []
+  stories: []
+  releases: []
+rules:
+  missing_traceability_blocks_approval: true
+  fid_must_trace_to_user_story: true
+  tdd_must_trace_to_fid: true
+  bdd_must_trace_to_acceptance_criteria: true
+  acceptance_must_trace_to_evidence: true

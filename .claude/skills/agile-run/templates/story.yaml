@@ -4,6 +4,8 @@ story:
   slug: "{{story_slug}}"
   title: "{{story_title}}"
   parent_feature: "{{feature_id}}"
+  profile: "{{profile}}"
+  risk: "{{risk}}"
   owner: "{{story_owner}}"
   status: "in_progress"
   created_at: "{{created_at}}"
@@ -14,21 +16,50 @@ workflow:
   previous_valid_state: null
   blocked: false
   recovery_required: false
+acceptance_criteria: []
 source:
-  prd_file: ""
-  ddd_file: ""
+  prd_file: null
   user_story_anchor: "{{story_id}}"
-  acceptance_criteria: []
+implementation_contract:
+  modules: []
+  interfaces: []
+  data_state_changes: []
+  edge_cases: []
+  migrations: []
+  rollout_risks: []
 documents:
-  fid: {versions: [], latest: null, approved: false, pending_revalidation: false, cardinality_rule: "default_one_fid_per_story"}
+  fid: {versions: [], latest: null, approved: false, pending_revalidation: false}
   tdd: {versions: [], latest: null, approved: false, pending_revalidation: false, flows: []}
   bdd: {owner_stage: "tdd", owner_skill: "agile-tdd", versions: [], latest: null, approved_with_tdd: false, pending_revalidation: false}
   acceptance: {versions: [], latest: null, approved: false, pending_revalidation: false}
+ddd_policy:
+  required: false
+  reason: "inherits_feature_policy"
+  waiver: {status: "waived", reason: "No story-specific DDD trigger identified yet.", source: "{{story_owner}}", downstream_risk: "low"}
 evidence: {directory: "evidence", index: "evidence/evidence.yaml"}
-traceability: {fid_to_user_story: null, tdd_flows_to_fid: {}, bdd_to_acceptance_criteria: [], acceptance_to_evidence: []}
+traceability: {file: "traceability.yaml"}
+quality_gates:
+  - id: "acceptance_criteria_defined"
+    name: "Story acceptance criteria defined"
+    status: "pending"
+  - id: "fid_ready"
+    name: "FID implementation contract ready"
+    status: "pending"
+  - id: "tdd_coverage"
+    name: "TDD coverage mapped to criteria"
+    status: "pending"
+  - id: "evidence_complete"
+    name: "Acceptance evidence complete"
+    status: "pending"
+  - id: "{{profile_specific_gate_id}}"
+    name: "{{profile_specific_gate_name}}"
+    status: "pending"
+  - id: "git_metadata"
+    name: "Git branch/commit/PR metadata linked"
+    status: "pending"
 github: {enabled: false, issue: {number: null, url: null}, pull_requests: {}}
-exceptions: {user_story_to_fid_override: null, shared_fid_decision: null}
 approvals: {records: []}
+policy_authorizations: []
 open_questions: []
 risks: []
 decisions: []

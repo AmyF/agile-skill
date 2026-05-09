@@ -9,3 +9,5 @@ Feature: {{feature_title}}
     When {{when_action}}
     Then {{then_outcome}}
 ```
+
+Covered Criteria: {{acceptance_criterion_id}}

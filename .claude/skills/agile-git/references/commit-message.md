@@ -1,3 +1,5 @@
 # Commit Message
 
-Use agile IDs in branch names, commit messages, PR bodies, and rollback records. `.agile` remains source of truth.
+Format: `{type}({agile-id}): {summary}`.
+
+Allowed commit types: `docs`, `feat`, `fix`, `test`, `refactor`, `chore`, `release`, `hotfix`, `recovery`.

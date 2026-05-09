@@ -32,7 +32,7 @@
 
 {{change_reason}}
 
-## Change Classification
+## Classification
 
 - [ ] Draft editorial change
 - [ ] Draft semantic change
@@ -41,43 +41,16 @@
 - [ ] Release freeze change
 - [ ] Emergency rollback change
 
-## Impacted Stages
-
-- [ ] PRD
-- [ ] DDD
-- [ ] FID
-- [ ] TDD
-- [ ] BDD
-- [ ] Acceptance
-- [ ] Release
-
 ## Impact Analysis
 
-| Artifact | Current Version | Impact | Required Action |
-|---|---|---|---|
-| PRD | {{source_prd_version}} | {{impact}} | none / revise / reapprove |
-| DDD | {{source_ddd_version}} | {{impact}} | none / revise / reapprove |
-| FID | {{source_fid_version}} | {{impact}} | none / revise / reapprove |
-| TDD | {{source_tdd_version}} | {{impact}} | none / revise / reapprove |
-| BDD | {{source_bdd_version}} | {{impact}} | none / revise / reapprove |
-| Acceptance | {{source_acceptance_version}} | {{impact}} | none / revise / reapprove |
-| Release | {{release_id}} | {{impact}} | none / revise / reapprove |
-
-## Earliest Impacted Stage
-
-{{earliest_impacted_stage}}
-
-## Downstream Revalidation
-
-| Artifact | Pending Revalidation | Reason |
-|---|---:|---|
-| PRD | no | |
-| DDD | no | |
-| FID | no | |
-| TDD | no | |
-| BDD | no | |
-| Acceptance | no | |
-| Release | no | |
+| Artifact | Impact | Required Action |
+|---|---|---|
+| PRD | {{impact}} | none / revise / reapprove |
+| DDD | {{impact}} | none / revise / reapprove / waive |
+| FID | {{impact}} | none / revise / reapprove |
+| TDD/BDD | {{impact}} | none / revise / reapprove |
+| Acceptance Evidence | {{impact}} | none / regenerate / reapprove |
+| Release | {{impact}} | none / revise / reapprove |
 
 ## Decision
 

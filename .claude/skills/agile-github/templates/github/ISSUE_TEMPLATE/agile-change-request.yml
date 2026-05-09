@@ -1,5 +1,5 @@
 name: Agile Change Request
-description: Track an agile-skill Change Request
+description: Track an agile-run Change Request
 title: "[Change Request] <title>"
 labels: [agile]
 body:

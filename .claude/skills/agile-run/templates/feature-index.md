@@ -1,4 +1,4 @@
 # Feature Index
 
-| Feature ID | Title | Status | Current Stage | Current State |
+| Feature ID | Title | Profile | Status | Current Gate |
 |---|---|---|---|---|

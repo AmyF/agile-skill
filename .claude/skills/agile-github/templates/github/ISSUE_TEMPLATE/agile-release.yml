@@ -1,5 +1,5 @@
 name: Agile Release
-description: Track an agile-skill Release
+description: Track an agile-run Release
 title: "[Release] <title>"
 labels: [agile]
 body:

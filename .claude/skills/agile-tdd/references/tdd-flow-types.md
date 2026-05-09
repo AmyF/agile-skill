@@ -1,3 +1,5 @@
 # TDD Flow Types
 
-Standard types: unit, domain, integration, api-contract, ui-component, ui-interaction, e2e, data-migration, event, job, security, accessibility, performance, observability, rollback.
+Use `unit`, `integration`, `ui`, `snapshot`, `accessibility`, `privacy`, `data_migration`, `game_rule`, `game_loop`, `performance`, `playtest`, or `manual_evidence`.
+
+Test-light is allowed only for low-risk non-behavioral UI/content/style work and still requires evidence, reviewer agreement, and a decision-log entry.

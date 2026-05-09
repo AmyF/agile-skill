@@ -1,14 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
   "title": "release",
-  "required": [
-    "schema_version"
-  ],
+  "type": "object",
+  "required": ["schema_version", "release", "scope", "gates", "approvals", "rollback"],
   "properties": {
-    "schema_version": {
-      "type": "string"
-    }
+    "schema_version": {"type": "string"},
+    "release": {
+      "type": "object",
+      "required": ["id", "version", "profile", "status", "owner", "created_at", "updated_at"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^REL-[0-9]{4}-[0-9]{4}$"},
+        "profile": {"enum": ["app", "game"]},
+        "status": {"enum": ["planned", "scoped", "frozen", "verifying", "released", "monitored", "closed", "rolled_back", "cancelled"]}
+      },
+      "additionalProperties": true
+    },
+    "scope": {"type": "object", "required": ["features", "stories", "change_requests"]},
+    "gates": {"type": "array"},
+    "approvals": {"type": "array"},
+    "rollback": {"type": "object"}
   },
   "additionalProperties": true
 }

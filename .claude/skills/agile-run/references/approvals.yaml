@@ -2,5 +2,8 @@ core_rules:
   ai_must_not_self_approve: true
   approval_target_must_be_versioned_file: true
   latest_not_approval_target: true
-roles: [product_owner, domain_owner, engineering_lead, qa_owner, security_reviewer, data_owner, release_owner]
-sources: [explicit_user_instruction, github_pr_review, signed_decision_log_entry, external_approval_record]
+  machine_gates_may_auto_pass: true
+  semantic_approval_requires_external_source: true
+roles: [product_owner, domain_owner, engineering_lead, qa_owner, security_reviewer, data_owner, release_owner, gameplay_owner]
+sources: [explicit_user_instruction, batch_preauthorization, github_pr_review, signed_decision_log_entry, external_approval_record]
+approval_types: [semantic_approval, waiver, release_approval, policy_exception, high_risk_change]

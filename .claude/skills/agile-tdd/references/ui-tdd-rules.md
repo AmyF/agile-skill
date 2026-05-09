@@ -1,3 +1,5 @@
-# UI TDD Rules
+# UI And Game Evidence Rules
 
-TDD-lite is a controlled exception for low-risk, non-behavioral UI/content/style changes. It still requires evidence, Engineering Lead or QA Owner agreement, and a decision-log entry. It must not be used for login, auth, permissions, payment, data changes, API behavior, business rules, state transitions, or critical journeys.
+For app UI, capture deterministic tests when available and add screenshot/log/manual evidence when automation is impractical.
+
+For games, separate deterministic correctness from feel. Rules, scoring, inventory, economy, saves, and state transitions should be tested. Controls, juice, pacing, balance, and readability need playtest evidence and notes.

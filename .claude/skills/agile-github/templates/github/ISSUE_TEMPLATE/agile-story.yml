@@ -1,5 +1,5 @@
 name: Agile Story
-description: Track an agile-skill Story
+description: Track an agile-run Story
 title: "[Story] <title>"
 labels: [agile]
 body:

@@ -1,13 +1,40 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
   "title": "story",
-  "required": [
-    "schema_version"
-  ],
+  "type": "object",
+  "required": ["schema_version", "story", "workflow", "acceptance_criteria", "implementation_contract", "documents", "ddd_policy", "evidence", "traceability", "quality_gates", "approvals"],
   "properties": {
-    "schema_version": {
-      "type": "string"
+    "schema_version": {"type": "string"},
+    "story": {
+      "type": "object",
+      "required": ["id", "slug", "title", "parent_feature", "profile", "risk", "owner", "status", "created_at", "updated_at"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^US-[0-9]{3}-[a-z0-9][a-z0-9-]*$"},
+        "parent_feature": {"type": "string", "pattern": "^FEA-[0-9]{4}-[0-9]{4}-[a-z0-9][a-z0-9-]*$"},
+        "profile": {"enum": ["app", "game"]},
+        "risk": {"enum": ["low", "medium", "high"]},
+        "status": {"enum": ["in_progress", "accepted", "blocked", "cancelled"]}
+      },
+      "additionalProperties": true
+    },
+    "workflow": {"type": "object", "required": ["current_stage", "current_state", "blocked", "recovery_required"]},
+    "acceptance_criteria": {"type": "array"},
+    "implementation_contract": {"type": "object", "required": ["modules", "interfaces", "data_state_changes", "edge_cases", "migrations", "rollout_risks"]},
+    "documents": {"type": "object", "required": ["fid", "tdd", "bdd", "acceptance"]},
+    "ddd_policy": {"type": "object", "required": ["required", "reason", "waiver"]},
+    "evidence": {"type": "object", "required": ["directory", "index"]},
+    "traceability": {"type": "object", "required": ["file"]},
+    "quality_gates": {"type": "array", "items": {"$ref": "#/$defs/gate"}},
+    "approvals": {"type": "object", "required": ["records"]}
+  },
+  "$defs": {
+    "gate": {
+      "type": "object",
+      "required": ["id", "name", "status"],
+      "properties": {
+        "status": {"enum": ["pending", "passed", "failed", "waived"]}
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

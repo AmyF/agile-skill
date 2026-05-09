@@ -1,14 +1,42 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "agile runtime config",
   "type": "object",
-  "title": "agile",
-  "required": [
-    "schema_version"
-  ],
+  "required": ["schema_version", "project", "agile", "directories", "rules", "automation", "quality_profiles", "validation", "integrations"],
   "properties": {
-    "schema_version": {
-      "type": "string"
-    }
+    "schema_version": {"type": "string"},
+    "project": {
+      "type": "object",
+      "required": ["name", "profile", "provider", "owner", "url"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "profile": {"enum": ["app", "game"]},
+        "provider": {"type": "string"},
+        "owner": {"type": "string"},
+        "url": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "agile": {"type": "object", "required": ["root", "workflow_version"]},
+    "directories": {"type": "object", "required": ["changes", "features", "releases"]},
+    "rules": {
+      "type": "object",
+      "required": ["approved_artifacts_are_immutable", "semantic_change_requires_change_request", "latest_files_are_not_approval_targets", "ai_must_not_self_approve", "ddd_policy"]
+    },
+    "automation": {
+      "type": "object",
+      "required": ["model", "machine_gates_auto_advance", "semantic_approval_requires_external_source", "artifact_depth"],
+      "properties": {
+        "model": {"const": "automatic_gates"},
+        "machine_gates_auto_advance": {"type": "boolean"},
+        "semantic_approval_requires_external_source": {"type": "boolean"},
+        "artifact_depth": {"const": "concise_executable"}
+      },
+      "additionalProperties": true
+    },
+    "quality_profiles": {"type": "object", "required": ["allowed", "default"]},
+    "validation": {"type": "object", "required": ["mode", "schemas_location", "scripts_location"]},
+    "integrations": {"type": "object"}
   },
   "additionalProperties": true
 }

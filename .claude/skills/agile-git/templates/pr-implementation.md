@@ -1,3 +1,20 @@
-# pr-implementation.md
+# Implementation Pull Request
 
-Agile Metadata: {{feature_id}} {{story_id}} {{change_request_id}} {{release_id}}
+## Agile Metadata
+
+| Field | Value |
+|---|---|
+| Feature ID | {{feature_id}} |
+| Story ID | {{story_id}} |
+| Change Request ID | {{change_request_id}} |
+| Release ID | {{release_id}} |
+
+## Agile Artifacts
+
+- Story: {{story_yaml}}
+- Traceability: {{traceability_yaml}}
+- Evidence: {{evidence_yaml}}
+
+## Gate Summary
+
+{{gate_summary}}

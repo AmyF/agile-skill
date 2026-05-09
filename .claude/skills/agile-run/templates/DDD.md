@@ -8,11 +8,14 @@
 | Version | {{artifact_version}} |
 | Status | draft |
 
-## Content
+## Domain Model
 
-{{content}}
+{{domain_model}}
 
-## Approval
+## State And Rules
 
-| Role | Approver | Decision | Timestamp | Notes |
-|---|---|---|---|---|
+{{state_and_rules}}
+
+## Integration Boundaries
+
+{{integration_boundaries}}

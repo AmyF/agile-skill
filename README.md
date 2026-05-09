@@ -1,34 +1,30 @@
 # agile-skill
 
-`agile-skill` is a Claude Skills package for AI-assisted agile workflow management.
+`agile-skill` is a Claude-compatible Skills package for AI-assisted app and game development.
 
-It provides structured workflow support for PRD, DDD, FID, TDD, BDD, Acceptance evidence, Change Requests, Recovery, Git workflow, and optional file-based GitHub integration.
-
-The target project's `.agile` directory is always the workflow source of truth. GitHub, Git, CI, and external trackers may provide collaboration surfaces or evidence, but they do not replace `.agile`.
+It provides an App/Game agile development workflow with `.agile` as the source of truth, automatic machine gates, risk-based DDD, TDD/BDD, acceptance evidence, Git workflow, and optional file-based GitHub integration.
 
 ## Skills
 
 | Skill | Purpose |
 |---|---|
-| `agile-run` | Workflow orchestration, `.agile` runtime, state machine, approvals, validation, Change Requests |
-| `agile-prd` | PRD drafting and review |
-| `agile-ddd` | DDD drafting and review |
-| `agile-fid` | FID drafting and review |
-| `agile-tdd` | TDD and BDD drafting and review |
-| `agile-acceptance` | Acceptance documents, evidence review, verification matrix |
-| `agile-recovery` | Recovery, rollback impact, invalid state repair, revalidation planning |
-| `agile-git` | Git branch, commit, PR, merge, release, hotfix, and rollback workflow |
-| `agile-github` | Optional file-based GitHub templates and workflow files |
+| `agile-run` | Main app/game workflow kernel: discussion, planning, `.agile` runtime, profiles, artifacts, gates, traceability, evidence, Change Requests, recovery, and release readiness |
+| `agile-run-auto` | Thin automatic execution mode that reuses `agile-run` and advances clear requirements through artifacts, traceability, evidence, and gates until a stop condition |
+| `agile-tdd` | TDD/BDD, app UI/integration tests, game loop/rule tests, playtest evidence, regression coverage, and evidence mapping |
+| `agile-git` | Branch, commit, PR, merge, release, hotfix, and rollback workflow aligned to `.agile` artifacts |
+| `agile-github` | Optional local `.github` templates and workflow files; no GitHub API automation |
 
 ## Core Principles
 
 ```text
 .agile is the source of truth.
-AI must not self-approve.
+Automatic gates verify machine-checkable work.
+AI must not self-approve semantic meaning, waivers, or releases.
 Approved artifacts are immutable.
 latest files are not approval targets.
-Semantic changes to approved artifacts require Change Request.
-BDD belongs to TDD.
+Acceptance Criteria come before FID and TDD.
+DDD is risk-based.
+Traceability is a gate, not a manual matrix.
 GitHub integration is optional and file-based.
 ```
 
@@ -40,7 +36,6 @@ GitHub integration is optional and file-based.
 ├── status.yaml
 ├── feature-index.md
 ├── decision-log.md
-├── recovery-log.md
 ├── changes/
 ├── features/
 └── releases/
@@ -48,6 +43,19 @@ GitHub integration is optional and file-based.
 
 Schemas and scripts remain inside the skill package and are not copied into `.agile`.
 
-## GitHub Integration
+## Workflow
 
-`agile-github` only generates local files such as `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/*.yml`, `.github/workflows/agile-gate.yml`, and configuration templates. It does not call GitHub APIs.
+```text
+Intake
+→ Feature PRD
+→ Story + Acceptance Criteria
+→ DDD if required
+→ FID
+→ TDD/BDD
+→ Implementation
+→ Acceptance Evidence
+→ Git Gate
+→ Release
+```
+
+The default artifact style is concise and executable: enough information for implementation, validation, and audit without creating document theater.

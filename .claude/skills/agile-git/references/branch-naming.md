@@ -1,3 +1,5 @@
 # Branch Naming
 
-Use agile IDs in branch names, commit messages, PR bodies, and rollback records. `.agile` remains source of truth.
+Allowed types: `doc`, `impl`, `test`, `acceptance`, `release`, `hotfix`, `recovery`, `chore`.
+
+Allowed IDs: `FEA-{YYYY}-{NNNN}-{slug}`, `US-{NNN}-{slug}`, `CR-{YYYY}-{NNNN}-{slug}`, or `REL-{YYYY}-{NNNN}`.

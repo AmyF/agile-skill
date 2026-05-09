@@ -3,6 +3,8 @@ feature:
   id: "{{feature_id}}"
   slug: "{{feature_slug}}"
   title: "{{feature_title}}"
+  profile: "{{profile}}"
+  risk: "{{risk}}"
   owner: "{{feature_owner}}"
   status: "in_progress"
   created_at: "{{created_at}}"
@@ -13,17 +15,27 @@ workflow:
   previous_valid_state: null
   blocked: false
   recovery_required: false
+acceptance_criteria: []
 documents:
   prd: {versions: [], latest: null, approved: false, pending_revalidation: false}
   ddd: {versions: [], latest: null, approved: false, pending_revalidation: false}
+  feature_acceptance: {versions: [], latest: null, approved: false, pending_revalidation: false}
+ddd_policy:
+  required: false
+  reason: "not_classified"
+  waiver: {status: "waived", reason: "No complex domain behavior identified yet.", source: "{{feature_owner}}", downstream_risk: "low"}
 stories: []
-feature_acceptance: {versions: [], latest: null, approved: false, pending_revalidation: false}
 traceability: {file: "traceability.yaml"}
-github:
-  enabled: false
-  feature_issue: {number: null, url: null}
-  project: {item_id: null}
+quality_gates:
+  - id: "feature_acceptance_criteria"
+    name: "Feature acceptance criteria defined"
+    status: "pending"
+  - id: "feature_traceability"
+    name: "Feature traceability complete"
+    status: "pending"
+github: {enabled: false, feature_issue: {number: null, url: null}, project: {item_id: null}}
 approvals: {records: []}
+policy_authorizations: []
 open_questions: []
 risks: []
 decisions: []

@@ -1,14 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
   "title": "evidence",
-  "required": [
-    "schema_version"
-  ],
+  "type": "object",
+  "required": ["schema_version", "scope", "feature_id", "story_id", "evidence", "gate_results", "waivers", "notes"],
   "properties": {
-    "schema_version": {
-      "type": "string"
-    }
+    "schema_version": {"type": "string"},
+    "scope": {"enum": ["feature", "story", "release"]},
+    "feature_id": {"type": "string", "pattern": "^FEA-[0-9]{4}-[0-9]{4}-[a-z0-9][a-z0-9-]*$"},
+    "story_id": {"type": ["string", "null"], "pattern": "^US-[0-9]{3}-[a-z0-9][a-z0-9-]*$"},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "status", "covers_acceptance_criteria"],
+        "properties": {
+          "status": {"enum": ["passed", "failed", "waived"]},
+          "covers_acceptance_criteria": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "gate_results": {"type": "array"},
+    "waivers": {"type": "array"},
+    "notes": {"type": "array"}
   },
   "additionalProperties": true
 }

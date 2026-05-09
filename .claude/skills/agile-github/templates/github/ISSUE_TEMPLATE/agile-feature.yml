@@ -1,5 +1,5 @@
 name: Agile Feature
-description: Track an agile-skill Feature
+description: Track an agile-run Feature
 title: "[Feature] <title>"
 labels: [agile]
 body:

@@ -1,59 +1,31 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Change Request Record",
+  "title": "change request record",
   "type": "object",
-  "required": [
-    "schema_version",
-    "metadata",
-    "interruption_context",
-    "change_summary",
-    "reason",
-    "change_classification",
-    "impacted_stages",
-    "impact_analysis",
-    "earliest_impacted_stage",
-    "downstream_revalidation",
-    "decision",
-    "approvals"
-  ],
+  "required": ["schema_version", "metadata", "interruption_context", "change_summary", "reason", "change_classification", "impacted_stages", "impact_analysis", "earliest_impacted_stage", "downstream_revalidation", "decision", "approvals"],
   "properties": {
-    "schema_version": {
-      "type": "string"
-    },
+    "schema_version": {"type": "string"},
     "metadata": {
       "type": "object",
-      "required": [
-        "change_request_id",
-        "status",
-        "created_at",
-        "owner",
-        "affected_feature",
-        "affected_story",
-        "affected_release"
-      ]
+      "required": ["change_request_id", "status", "created_at", "owner", "affected_feature", "affected_story", "affected_release"],
+      "properties": {
+        "change_request_id": {"type": "string", "pattern": "^CR-[0-9]{4}-[0-9]{4}-[a-z0-9][a-z0-9-]*$"},
+        "status": {"enum": ["proposed", "impact_analysis", "approved", "rejected", "in_rework", "revalidated", "closed"]}
+      },
+      "additionalProperties": true
     },
     "interruption_context": {
       "type": "object",
-      "required": [
-        "current_stage",
-        "current_state",
-        "work_interrupted",
-        "approved_artifacts_affected",
-        "draft_artifacts_affected",
-        "downstream_work_affected",
-        "resume_point"
-      ]
+      "required": ["current_stage", "current_state", "work_interrupted", "approved_artifacts_affected", "draft_artifacts_affected", "downstream_work_affected", "resume_point"]
     },
     "change_classification": {
-      "enum": [
-        "draft_editorial_change",
-        "draft_semantic_change",
-        "approved_editorial_change",
-        "approved_semantic_change",
-        "release_freeze_change",
-        "emergency_rollback_change"
-      ]
-    }
+      "enum": ["draft_editorial_change", "draft_semantic_change", "approved_editorial_change", "approved_semantic_change", "release_freeze_change", "emergency_rollback_change"]
+    },
+    "impacted_stages": {"type": "array"},
+    "impact_analysis": {"type": "array"},
+    "downstream_revalidation": {"type": "array"},
+    "decision": {"enum": ["proposed", "impact_analysis", "approved", "rejected", "in_rework", "revalidated", "closed"]},
+    "approvals": {"type": "array"}
   },
   "additionalProperties": true
 }

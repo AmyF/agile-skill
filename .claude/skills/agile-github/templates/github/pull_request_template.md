@@ -9,3 +9,11 @@
 | Change Request ID | |
 | Release ID | |
 | Agile Source of Truth | `.agile` |
+
+## Gate Evidence
+
+| Field | Value |
+|---|---|
+| Traceability | |
+| Evidence | |
+| Gate Status | |

@@ -1,16 +1,15 @@
 ---
 name: agile-github
-description: Generate optional GitHub file-based integration for agile-skill projects. Use when the user asks to create .github templates, GitHub Issue templates, Pull Request template, Issue + PR workflow files, GitHub Actions gates, branch protection template, or GitHub Project field template. This skill does not call GitHub APIs.
+description: Generate optional file-based GitHub integration for agile-run projects. Use when asked to create local .github PR templates, Issue templates, Issue/PR workflow files, GitHub Actions gates, branch protection templates, or Project field templates. This skill never calls GitHub APIs.
 ---
 
 # Agile GitHub Skill
 
 ## Purpose
-Generate optional file-based GitHub integration. It creates local `.github` files and configuration templates only.
+Generate optional local `.github` files that mirror `.agile` metadata and gates. GitHub is a collaboration surface only; `.agile` remains source of truth.
 
 ## Modes
 Disabled; PR template only; Issue templates only; Issue templates + PR template + Issue/PR workflow; plus optional GitHub Actions and Project field template.
 
 ## Forbidden Actions
-Do not call GitHub APIs or use GitHub CLI commands to create or synchronize remote GitHub objects. Do not overwrite existing `.github` files without explicit permission.
-
+Do not call GitHub APIs or use GitHub CLI commands to create, synchronize, close, or mutate remote GitHub objects. Do not overwrite existing `.github` files without explicit permission.

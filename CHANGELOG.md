@@ -1,10 +1,12 @@
 # Changelog
 
-## [1.0.0] - Unreleased
+## Unreleased
 
-### Added
-- Added nine Claude Skills: `agile-run`, `agile-prd`, `agile-ddd`, `agile-fid`, `agile-tdd`, `agile-acceptance`, `agile-recovery`, `agile-git`, and `agile-github`.
-- Added `.agile` runtime model, state machine, approval model, traceability, validation runtime, Change Requests, Recovery, TDD-lite, mid-workflow change rules, Git workflow, and file-based GitHub integration.
+- Breaking: replaced the nine-skill document workflow with the `agile-run` workflow kernel plus `agile-run-auto`, `agile-tdd`, `agile-git`, and `agile-github` expert/entrypoint skills.
+- Added app/game profiles, automatic machine gates, concise executable artifacts, risk-based DDD, and gate-oriented traceability/evidence.
+- Tightened runtime YAML schemas for `.agile` config, status, feature, story, traceability, evidence, release, and change request records.
+- Added `validate-gates` to check placeholders, schema validity, acceptance criteria, traceability, evidence, game playtest evidence, and DDD waiver requirements.
 
-### Removed
-- Removed GitHub API automation, automatic Issue/PR creation, and Project synchronization.
+## 0.1.0
+
+- Added initial Claude Skills for agile workflow management, PRD, DDD, FID, TDD, Acceptance, Recovery, Git workflow, and file-based GitHub integration.

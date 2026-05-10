@@ -36,7 +36,21 @@
     },
     "quality_profiles": {"type": "object", "required": ["allowed", "default"]},
     "validation": {"type": "object", "required": ["mode", "schemas_location", "scripts_location"]},
-    "integrations": {"type": "object"}
+    "integrations": {
+      "type": "object",
+      "properties": {
+        "github": {
+          "type": "object",
+          "properties": {
+            "mode": {"enum": ["disabled", "file_based", "gh_controlled"]},
+            "automation_tool": {"enum": ["gh", null]},
+            "remote_mutation_requires_controlled_mode": {"type": "boolean"}
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
   },
   "additionalProperties": true
 }

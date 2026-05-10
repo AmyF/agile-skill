@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -9,6 +10,9 @@ from agile_validate import load_data, schema_for, validate_file
 
 
 SCHEMA_TYPES = ["agile", "status", "feature", "story", "traceability", "evidence", "release", "change-request"]
+BRANCH_PATTERN = re.compile(r"^(doc|impl|test|acceptance|release|hotfix|recovery|chore)/(FEA-[0-9]{4}-[0-9]{4}-[a-z0-9][a-z0-9-]*|US-[0-9]{3}-[a-z0-9][a-z0-9-]*|CR-[0-9]{4}-[0-9]{4}-[a-z0-9][a-z0-9-]*|REL-[0-9]{4}-[0-9]{4})/[a-z0-9][a-z0-9-]*$")
+COMMIT_PATTERN = re.compile(r"^(docs|feat|fix|test|refactor|chore|release|hotfix|recovery)\((FEA-[0-9]{4}-[0-9]{4}-[a-z0-9][a-z0-9-]*|US-[0-9]{3}-[a-z0-9][a-z0-9-]*|CR-[0-9]{4}-[0-9]{4}-[a-z0-9][a-z0-9-]*|REL-[0-9]{4}-[0-9]{4})\): .+")
+SHA_PATTERN = re.compile(r"^[0-9a-f]{7,40}$")
 
 
 def validate_schema(schema_type: str, file_path: Path, failures: list[str]) -> None:
@@ -100,6 +104,12 @@ def validate_story(story_path: Path, story: dict, failures: list[str]) -> None:
     git_refs = links.get("git_refs", {})
     if not (git_refs.get("branches") or git_refs.get("commits") or git_refs.get("pull_requests")):
         failures.append(f"{trace_file}: at least one Git branch, commit, or PR ref is required")
+    for branch in git_refs.get("branches") or []:
+        if isinstance(branch, str) and not BRANCH_PATTERN.match(branch):
+            failures.append(f"{trace_file}: invalid branch ref {branch!r}")
+    for commit in git_refs.get("commits") or []:
+        if isinstance(commit, str) and not (COMMIT_PATTERN.match(commit) or SHA_PATTERN.match(commit)):
+            failures.append(f"{trace_file}: invalid commit ref {commit!r}")
 
     tdd_coverage: set[str] = set()
     for flow in links.get("tdd_flows") or []:

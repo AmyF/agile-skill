@@ -1,3 +1,5 @@
-# Github Projects
+# GitHub Projects
 
-GitHub integration is file-based only. Issue + PR workflow is preserved as a manual collaboration pattern. `.agile` remains source of truth.
+Project field templates may be generated locally in `file_based` mode.
+
+Controlled automation does not mutate GitHub Projects. Keep project status derived from `.agile` artifacts, Issues, PRs, and release records.

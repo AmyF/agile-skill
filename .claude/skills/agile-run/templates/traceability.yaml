@@ -15,6 +15,8 @@ links:
     branches: []
     commits: []
     pull_requests: []
+    issues: []
+    merge: {commit: null, method: null}
   release_refs: []
 coverage:
   acceptance_criteria: []

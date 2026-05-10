@@ -40,6 +40,8 @@ integrations:
     require_pr_metadata: true
   github:
     enabled: false
-    file_based_only: true
-    api_automation_allowed: false
+    mode: "disabled"
+    allowed_modes: ["disabled", "file_based", "gh_controlled"]
+    remote_mutation_requires_controlled_mode: true
+    automation_tool: "gh"
     source_of_truth: ".agile"

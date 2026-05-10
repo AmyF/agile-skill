@@ -27,8 +27,9 @@ Load only the references needed for the task:
 3. Put Acceptance Criteria in PRD/Story before FID and TDD.
 4. Require DDD only when risk or domain complexity demands it; otherwise record a waiver.
 5. Use `agile-tdd` for TDD/BDD, app UI tests, game loop tests, playtest scenarios, and evidence mapping.
-6. Use `agile-git` for branch, commit, PR, release, hotfix, and rollback workflow.
-7. Run schema, placeholder, traceability, evidence, and profile gates before declaring work ready.
+6. Use `agile-git` for branch, commit, push, release, hotfix, rollback workflow, and Git traceability.
+7. Use `agile-github` for GitHub Issues, PRs, merge, and Issue close only when `integrations.github.mode` is `gh_controlled`.
+8. Run schema, placeholder, traceability, evidence, Git metadata, and profile gates before declaring work ready.
 
 ## Forbidden Actions
-Do not self-approve, infer approval, approve `latest`, modify approved versioned artifacts in place, silently overwrite `.agile`, bypass failed gates, generate `.github` files directly, call GitHub APIs, or silently apply semantic changes after approval.
+Do not self-approve, infer approval, approve `latest`, modify approved versioned artifacts in place, silently overwrite `.agile`, bypass failed gates, generate `.github` files directly, mutate remote GitHub state outside `gh_controlled` mode, call direct GitHub APIs, or silently apply semantic changes after approval.

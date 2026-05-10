@@ -6,4 +6,5 @@
 - [ ] Each skill has concise `SKILL.md` frontmatter.
 - [ ] `agile-run` has strict runtime schemas for agile, status, feature, story, traceability, evidence, release, and change request records.
 - [ ] `agile-run-auto` has no duplicate schemas, templates, or scripts.
-- [ ] GitHub API automation is absent.
+- [ ] GitHub remote mutation is limited to controlled `gh` scripts under `agile-github/scripts`.
+- [ ] Direct GitHub API/token automation is absent.

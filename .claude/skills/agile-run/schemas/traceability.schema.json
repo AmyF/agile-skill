@@ -20,7 +20,25 @@
         "bdd_scenarios": {"type": "array", "items": {"type": "object"}},
         "implementation_refs": {"type": "array", "items": {"type": "string"}},
         "evidence_refs": {"type": "array", "items": {"type": "object"}},
-        "git_refs": {"type": "object", "required": ["branches", "commits", "pull_requests"]},
+        "git_refs": {
+          "type": "object",
+          "required": ["branches", "commits", "pull_requests", "issues", "merge"],
+          "properties": {
+            "branches": {"type": "array", "items": {"type": "string"}},
+            "commits": {"type": "array", "items": {"type": "string"}},
+            "pull_requests": {"type": "array", "items": {"type": "string"}},
+            "issues": {"type": "array", "items": {"type": "string"}},
+            "merge": {
+              "type": "object",
+              "properties": {
+                "commit": {"type": ["string", "null"]},
+                "method": {"type": ["string", "null"]}
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
         "release_refs": {"type": "array"}
       },
       "additionalProperties": true

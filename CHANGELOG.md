@@ -6,6 +6,7 @@
 - Added app/game profiles, automatic machine gates, concise executable artifacts, risk-based DDD, and gate-oriented traceability/evidence.
 - Tightened runtime YAML schemas for `.agile` config, status, feature, story, traceability, evidence, release, and change request records.
 - Added `validate-gates` to check placeholders, schema validity, acceptance criteria, traceability, evidence, game playtest evidence, and DDD waiver requirements.
+- Added opt-in controlled Git/GitHub automation through `agile-git` and GitHub CLI `gh` scripts under `agile-github`.
 
 ## 0.1.0
 

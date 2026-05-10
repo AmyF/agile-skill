@@ -37,9 +37,16 @@ for schema in agile status feature story traceability evidence release change-re
   [ -f "${SKILLS_DIR}/agile-run/schemas/${schema}.schema.json" ] || fail "schema missing: ${schema}"
 done
 
-if grep -RInE 'gh issue create|gh pr create|gh project|auto_create|auto_update|auto_close|sync_fields|last_synced_at' "${SKILLS_DIR}/agile-github" >/tmp/agile_github_api_matches.txt 2>/dev/null; then
+find "${SKILLS_DIR}/agile-github" -type f ! -name validate-github-config.sh -exec grep -InE 'api.github.com|Authorization:[[:space:]]*token|GITHUB_TOKEN|gh api|auto_create|auto_update|sync_fields|last_synced_at' {} + >/tmp/agile_github_api_matches.txt 2>/dev/null || true
+if [ -s /tmp/agile_github_api_matches.txt ]; then
   cat /tmp/agile_github_api_matches.txt >&2
-  fail "GitHub API automation references found"
+  fail "direct GitHub API/token automation references found"
+fi
+
+find "${SKILLS_DIR}" -path "${SKILLS_DIR}/agile-github" -prune -o -type f -exec grep -InE 'gh (issue|pr)' {} + >/tmp/agile_github_wrong_place.txt 2>/dev/null || true
+if [ -s /tmp/agile_github_wrong_place.txt ]; then
+  cat /tmp/agile_github_wrong_place.txt >&2
+  fail "GitHub gh automation must live under agile-github only"
 fi
 
 echo "[agile-run] release readiness check passed"

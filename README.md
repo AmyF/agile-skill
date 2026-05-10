@@ -2,7 +2,7 @@
 
 `agile-skill` is a Claude-compatible Skills package for AI-assisted app and game development.
 
-It provides an App/Game agile development workflow with `.agile` as the source of truth, automatic machine gates, risk-based DDD, TDD/BDD, acceptance evidence, Git workflow, and optional file-based GitHub integration.
+It provides an App/Game agile development workflow with `.agile` as the source of truth, automatic machine gates, risk-based DDD, TDD/BDD, acceptance evidence, Git workflow, and optional controlled GitHub integration.
 
 ## Skills
 
@@ -12,7 +12,7 @@ It provides an App/Game agile development workflow with `.agile` as the source o
 | `agile-run-auto` | Thin automatic execution mode that reuses `agile-run` and advances clear requirements through artifacts, traceability, evidence, and gates until a stop condition |
 | `agile-tdd` | TDD/BDD, app UI/integration tests, game loop/rule tests, playtest evidence, regression coverage, and evidence mapping |
 | `agile-git` | Branch, commit, PR, merge, release, hotfix, and rollback workflow aligned to `.agile` artifacts |
-| `agile-github` | Optional local `.github` templates and workflow files; no GitHub API automation |
+| `agile-github` | Optional `.github` files plus controlled GitHub CLI automation for Issues, PRs, merge, and Issue close |
 
 ## Core Principles
 
@@ -25,7 +25,8 @@ latest files are not approval targets.
 Acceptance Criteria come before FID and TDD.
 DDD is risk-based.
 Traceability is a gate, not a manual matrix.
-GitHub integration is optional and file-based.
+GitHub integration is optional and disabled by default.
+Remote GitHub mutation requires `integrations.github.mode: gh_controlled`, authenticated `gh`, passing gates, and required approval.
 ```
 
 ## Runtime Structure
